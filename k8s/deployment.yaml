@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: okucomy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: okucomy
+  template:
+    metadata:
+      labels:
+        app: okucomy
+    spec:
+      containers:
+      - image: okteto.dev/okucomy:latest
+        name: okucomy
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: Vless_UUID
+          value: "f2a1d2be-f512-475f-ba3a-9a473aba1f28"
+        - name: Vless_Path
+          value: "/f2a1d2be-f512-475f-ba3a-9a473aba1f28-vl"
+        - name: Vmess_UUID
+          value: "f2a1d2be-f512-475f-ba3a-9a473aba1f28"
+        - name: Vmess_Path
+          value: "/f2a1d2be-f512-475f-ba3a-9a473aba1f28-vm"
+        - name: Share_Path
+          value: "/v2lidswrk"
